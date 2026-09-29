@@ -1,0 +1,21 @@
+# Il piano gratuito di Supabase mette in pausa il progetto dopo 7 giorni senza richieste.
+# Questa azione invia un evento "heartbeat" ogni 3 giorni (la dashboard lo ignora).
+# Va copiata in ~/Developer/referto-baskin-web/.github/workflows/ e servono due "secrets"
+# del repository: SUPABASE_URL e SUPABASE_PUBLISHABLE_KEY (la chiave pubblica, non quella segreta).
+name: Tieni attivo Supabase
+on:
+  schedule:
+    - cron: "17 6 */3 * *"
+  workflow_dispatch:
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Invia heartbeat
+        env:
+          URL: ${{ secrets.SUPABASE_URL }}
+          KEY: ${{ secrets.SUPABASE_PUBLISHABLE_KEY }}
+        run: |
+          curl -sf -X POST "$URL/rest/v1/events" \
+            -H "apikey: $KEY" -H "Content-Type: application/json" -H "Prefer: return=minimal" \
+            -d "{\"ts\":\"$(date -u +%Y-%m-%dT%H:%M:%SZ)\",\"device_id\":\"00000000-0000-4000-8000-000000000000\",\"session_id\":\"github\",\"app_version\":\"-\",\"platform\":\"github\",\"name\":\"heartbeat\"}"
