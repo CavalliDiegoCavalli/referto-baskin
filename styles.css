@@ -449,3 +449,26 @@ button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-vis
 .ev .tg.A{color:var(--A-ink)} .ev .tg.B{color:var(--B-ink)}
 .mhint{font-size:12px;color:var(--warn);font-weight:700;min-height:0}
 .mhint:empty{display:none}
+
+/* ---------- Account: accesso e registrazione (1.12) ---------- */
+.auth{overflow:auto;padding:28px 16px 40px;-webkit-overflow-scrolling:touch}
+.auth .al{max-width:460px;width:100%;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+.auth .al h2{font-family:var(--display);font-size:30px;margin:0}
+.auth .al p{margin:0;color:var(--muted);line-height:1.45}
+.auth .al>.btn{height:50px;justify-content:center}
+.auth .a2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:520px){.auth .a2{grid-template-columns:1fr}}
+.auth .otp{font-family:var(--display);font-size:30px;letter-spacing:8px;text-align:center;height:58px}
+.amsg:empty{display:none}.amsg{display:flex;flex-direction:column;gap:8px}
+.aerr{background:var(--crit-soft);color:var(--ink);border-radius:10px;padding:10px 12px;line-height:1.4;font-size:14px}
+.ainfo{background:var(--sunk);color:var(--ink);border-radius:10px;padding:10px 12px;line-height:1.4;font-size:14px}
+.acb{display:flex;gap:10px;align-items:flex-start;line-height:1.4;font-size:14.5px}
+.acb input{width:22px;height:22px;flex:none;margin:0;accent-color:var(--ink)}
+.acb small{color:var(--muted)}
+.alink{border:0;background:none;padding:0;color:var(--focus);font-weight:700;text-decoration:underline}
+.asep{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:13.5px}
+.asep::before,.asep::after{content:'';flex:1;height:1px;background:var(--line)}
+.arow{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.avatar{width:58px;height:58px;border-radius:50%;background:var(--ink);color:var(--surface);display:grid;place-items:center;font-family:var(--display);font-weight:700;font-size:24px;flex:none}
+.privacy{display:flex;flex-direction:column;gap:10px;line-height:1.5;font-size:14.5px}
+.privacy p{margin:0}
