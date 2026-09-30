@@ -1,0 +1,26 @@
+# Brevo fa scadere la chiave SMTP dopo 90 giorni consecutivi di inattività: se per 3 mesi nessuno si
+# registra o chiede una nuova password, le email con il codice smettono di partire.
+# Questa azione, il giorno 1 di ogni mese, chiede a Supabase una "nuova password" per un account di
+# servizio: Supabase invia l'email tramite Brevo e la chiave resta attiva. Controlla anche tutta la
+# catena (Supabase → Brevo): se l'invio fallisce l'azione fallisce e GitHub ti avvisa per email.
+# Secrets del repository: SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY (già presenti) ed EMAIL_SERVIZIO
+# (indirizzo dell'account di servizio creato su Supabase, senza ruoli: non entra nell'app).
+name: Tieni attiva la chiave email
+on:
+  schedule:
+    - cron: "23 7 1 * *"
+  workflow_dispatch:
+jobs:
+  email:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Invia l'email di prova tramite Supabase e Brevo
+        env:
+          URL: ${{ secrets.SUPABASE_URL }}
+          KEY: ${{ secrets.SUPABASE_PUBLISHABLE_KEY }}
+          EMAIL: ${{ secrets.EMAIL_SERVIZIO }}
+        run: |
+          code=$(curl -s -o out.txt -w "%{http_code}" -X POST "$URL/auth/v1/recover" \
+            -H "apikey: $KEY" -H "Content-Type: application/json" -d "{\"email\":\"$EMAIL\"}")
+          echo "Supabase: HTTP $code"; cat out.txt; echo
+          test "$code" = "200"
