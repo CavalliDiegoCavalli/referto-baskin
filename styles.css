@@ -472,3 +472,7 @@ button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-vis
 .avatar{width:58px;height:58px;border-radius:50%;background:var(--ink);color:var(--surface);display:grid;place-items:center;font-family:var(--display);font-weight:700;font-size:24px;flex:none}
 .privacy{display:flex;flex-direction:column;gap:10px;line-height:1.5;font-size:14.5px}
 .privacy p{margin:0}
+
+/* tastiera aperta (1.13.1): l'area che scorre della preparazione finisce sopra la tastiera, così il campo in modifica resta visibile */
+:root{--kb:0px}
+.pane-body{margin-bottom:var(--kb)}
