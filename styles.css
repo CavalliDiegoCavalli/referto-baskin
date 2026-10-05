@@ -479,3 +479,30 @@ button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-vis
 
 /* versione e copyright in chiaro (dalla 1.13.5) */
 .legal{margin:18px 0 6px;text-align:center;color:var(--muted);font-size:12.5px;line-height:1.4}
+
+/* dalla 1.7.3 (Platform) e Training 1.14: espulsione diretta, panchina lunga, firma dell'allenatore sulla lista */
+.fl.dq,.act.dq{border-color:var(--crit);color:var(--crit)}
+.fouls{grid-template-columns:repeat(auto-fit,minmax(54px,1fr))}
+.bench.many{grid-template-columns:repeat(5,minmax(0,1fr));gap:5px}
+.bench.many .tile.sm{min-height:clamp(44px,6.6vh,60px);padding:4px 6px;gap:1px}
+.bench.many .tile.sm .big{font-size:clamp(19px,3vh,24px)}
+.bench.many .tile.sm .pn{font-size:11px}
+.team:has(.bench.many){overflow:auto}
+@media (max-width:1020px){.bench.many{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.lpad{max-width:640px;width:100%}
+.lpad canvas{height:150px}
+
+/* passo delle regole del referto (Training): stesso editor della Baskin Platform */
+.rgrp{display:flex;flex-direction:column;gap:8px;margin-top:14px}
+.rgrp .ck small{color:var(--muted)}
+.rules-ed{display:flex;flex-direction:column;gap:6px}
+.rchk{display:flex;gap:12px;align-items:flex-start;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:var(--surface);cursor:pointer}
+.rchk>input{width:22px;height:22px;flex:none;margin:1px 0 0;accent-color:var(--ink)}
+.rchk>span{display:flex;flex-direction:column;gap:2px;line-height:1.35;min-width:0}
+.rchk small{color:var(--muted)}
+.rchk .cat{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:6px}
+.rchk .cat[hidden]{display:none}
+.rnote{display:flex;flex-direction:column;gap:6px;line-height:1.45;border-color:#E07F12;background:color-mix(in srgb,#E07F12 14%,var(--surface))}
+/* cinque passi nella preparazione (Training): la colonna dei passi non allunga la pagina */
+@media (min-width:1200px){.setup{grid-template-rows:minmax(0,1fr)}.steps{min-height:0}}
+@media (min-width:1200px) and (max-height:820px){.steps .step{padding:8px 12px}.steps .reminder{font-size:12px}}
