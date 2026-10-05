@@ -509,3 +509,6 @@ button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-vis
 /* lista e firma dell'allenatore una sotto l'altra (la lista non si comprime); numeri di maglia ripetuti in rosso */
 .pane-body>.roster,.pane-body>.lpad{flex:none}
 .prow input.nn.dup{border-color:var(--crit);background:var(--crit-soft);color:var(--crit)}
+.rchk .rdep{color:var(--warn);font-weight:700}
+.rchk .rdep[hidden]{display:none}
+.rchk:has(input:disabled){opacity:.7;cursor:default}
